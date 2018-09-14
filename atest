@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# a version of test that you can apply
+/bin/test $2 $1 $3
+result=$?
+echo "test $2 $1 $3 => $result"
+exit $result
