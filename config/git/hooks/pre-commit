@@ -1,0 +1,13 @@
+#! /bin/sh
+
+# pre-commit: fail if current branch is master
+case "$(git rev-parse --abbrev-ref HEAD)" in
+master) echo "you forgot to make a branch!" 1>&2; exit 1;;
+esac
+
+# execute the repo hooks
+if [ -x $GIT_DIR/hooks/pre-commit ]; then
+    exec $GIT_DIR/hooks/pre-commit
+fi
+
+exit 0

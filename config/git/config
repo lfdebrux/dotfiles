@@ -1,0 +1,7 @@
+[core]
+	hooksPath = ~/.config/git/hooks
+[rebase]
+	autoSquash = true
+[alias]
+	ri = rebase -i origin/master
+	rc = rebase --continue
