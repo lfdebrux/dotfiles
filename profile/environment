@@ -1,0 +1,3 @@
+EDITOR=vim
+PAGER=nvimpager
+GIT_PAGER=less

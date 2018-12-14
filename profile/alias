@@ -1,0 +1,3 @@
+highlight=nvimpager -c
+ls=/bin/ls -G
+view=nvimpager -p
