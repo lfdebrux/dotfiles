@@ -2,7 +2,7 @@
 PATH := $(dir $(abspath $(lastword ${MAKEFILE_LIST})))
 UNAME := $(shell uname)
 
-LN = ln
+LN := $(shell which ln)
 
 TARGETS := \
 	~/.config/nvim \
