@@ -5,3 +5,4 @@
 [alias]
 	ri = rebase -i origin/master
 	rc = rebase --continue
+	up = !git checkout master && git pull
