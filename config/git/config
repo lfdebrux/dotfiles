@@ -6,3 +6,10 @@
 	ri = rebase -i origin/master
 	rc = rebase --continue
 	up = !git checkout master && git pull
+	# uses trick from https://www.atlassian.com/blog/git/advanced-git-aliases
+	prune = "!f() { \
+		git fetch --prune \
+		&& git branch -v --list --merged \
+		| awk '$3 == "[gone]" { print $1 }' \
+		| xargs git branch -d \
+		}; f"
