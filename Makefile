@@ -5,6 +5,7 @@ UNAME := $(shell uname)
 LN := $(shell which ln)
 
 TARGETS := \
+	~/.config/git \
 	~/.config/nvim \
 	~/.inputrc \
 	~/.tmux.conf \
