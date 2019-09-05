@@ -5,8 +5,12 @@
 [alias]
 	ri = rebase -i origin/master
 	rc = rebase --continue
-	up = !git checkout master && git pull
+	up = update
 	# uses trick from https://www.atlassian.com/blog/git/advanced-git-aliases
+	update = "!f() { \
+		git checkout -q master \
+		&& git pull \
+		;}; f"
 	prune-branches = "!f() { \
 		git fetch --prune \
 		&& git branch -v --list --merged \
