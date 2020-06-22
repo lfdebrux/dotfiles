@@ -3,12 +3,13 @@
 [rebase]
 	autoSquash = true
 [alias]
+	default-ref = "!git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@'"
 	ri = rebase -i origin/master
 	rc = rebase --continue
 	up = update
 	# uses trick from https://www.atlassian.com/blog/git/advanced-git-aliases
 	update = "!f() { \
-		git checkout -q master \
+		git switch -q `git default-ref` \
 		&& git pull \
 		;}; f"
 	prune-branches = "!f() { \
