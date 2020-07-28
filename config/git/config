@@ -1,5 +1,7 @@
 [core]
 	hooksPath = ~/.config/git/hooks
+[init]
+	defaultBranch = main
 [rebase]
 	autoSquash = true
 [alias]
