@@ -6,6 +6,7 @@
 	autoSquash = true
 [alias]
 	default-ref = "!git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@'"
+	please = push --force-with-lease
 	ri = "!f() { git rebase -i origin/`git default-ref` ;}; f"
 	rc = rebase --continue
 	up = update
