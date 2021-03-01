@@ -5,7 +5,7 @@ allowcommittomaster=$(git config --bool hooks.allowcommittomaster)
 if [ "$allowcommittomaster" != "true" ]; then
   # pre-commit: fail if current branch is master
   case "$(git rev-parse --abbrev-ref HEAD)" in
-  master) echo "you forgot to make a branch!" 1>&2; exit 1;;
+  master|main) echo "you forgot to make a branch!" 1>&2; exit 1;;
   esac
 fi
 
