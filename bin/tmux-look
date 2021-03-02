@@ -1,0 +1,61 @@
+#!/usr/bin/env es
+
+# Emulate mouse 3 (right click) behaviour of Acme in tmux
+#
+# From plan9port's acme(1) man page:
+# > Pointing at text with button 3 instructs acme to locate or acquire the
+# > file, string, etc
+#
+# tmux-look(1) currently simply opens the file in $EDITOR in a pane, or
+# switches to the first pane with the file open.
+
+fn untilde name {
+	# do tilde expansion of string
+	if {~ $name ~/*} {
+		return $HOME/^<={~~ $name ~/*}
+	} {
+		return $name
+	}
+}
+
+fn getfile dir name {
+	name = <={untilde $name}
+	if {~ $name /*} {
+		return <={access -1 -f $name}
+	} {
+		return <={access -1 -f $dir/$name}
+	}
+}
+
+fn find-pane f {
+	# Get the id of the first pane that already has the file f open, if any
+	#
+	# Assumes that $EDITOR (or whatever) sets title to path of f.
+	for (pane = ``\n{tmux list-panes -F '#{pane_id}:#{pane_current_path}:#{pane_title}'}) {
+		let((id c t) = ``:{echo -n $pane}; ff = ) {
+			ff = <={getfile $c $t}
+			if {! ~ $ff () && test $f -ef $ff} {
+				return $id
+			}
+		}
+	}
+	return
+}
+
+let (t = $1; c = `{tmux display -p '#{pane_current_path}'}) {
+	let ( f = <={getfile $c $t} ) {
+		if {! ~ $f ()} {
+			let ( pane = <={find-pane $f} ) {
+				if {! ~ $pane ()} {
+					tmux select-pane -t $pane
+					exit 0
+				} {
+					tmux split-window $EDITOR $f
+					exit 0
+				}
+			}
+		} {
+			exit 1
+		}
+	}
+}

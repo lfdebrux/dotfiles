@@ -1,0 +1,26 @@
+#!/usr/bin/env es
+
+# Emulate mouse 2 (middle click) behaviour of Acme in tmux
+#
+# tmux-exec(1) will run the command and show the output in a new pane.
+#
+# If the command is not a pager or other interactive program the new pane will
+# be in copy mode, and when copy mode is exited the pane will exit.
+
+fn test-pane pane option {
+	return `{tmux display -t $pane -p '#{?'^$option^',0,1}'}
+}
+
+if {~ $1 -} {
+	let (pane = `{tmux display -p '#{pane_id}'}) {
+		$*(2 ...)
+		# assume that interactive commands use the alternate screen
+		if {! test-pane $pane 'alternate_on'} {
+			tmux copy-mode -t $pane
+			# hang around until pane has left copy mode
+			while {test-pane $pane 'pane_in_mode'} sleep 1
+		}
+	}
+} {
+	tmux split-window -c '#{pane_current_path}' tmux-exec - $*
+}
