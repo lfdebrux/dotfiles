@@ -2,10 +2,14 @@
 require('vis')
 
 -- load plugins
+require('syntaxtheme')
 
 vis.events.subscribe(vis.events.INIT, function()
 	-- Your global configuration options
 	vis:command('set layout v')
+
+	vis:command('set theme term')
+	vis:command('set syntaxtheme peachpuff')
 end)
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
