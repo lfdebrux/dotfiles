@@ -8,6 +8,7 @@ TARGETS := \
 	~/.config/git \
 	~/.config/tmux \
 	~/.config/nvim \
+	~/.config/vis \
 	~/.inputrc \
 	~/.tmux.conf
 
