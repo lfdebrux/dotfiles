@@ -10,6 +10,7 @@ TARGETS := \
 	~/.config/tmux \
 	~/.config/nvim \
 	~/.config/starship.toml \
+	~/.config/vis \
 	~/.inputrc \
 	~/.tigrc \
 	~/.tmux.conf
