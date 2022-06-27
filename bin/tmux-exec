@@ -6,6 +6,9 @@
 #
 # If the command is not a pager or other interactive program the new pane will
 # be in copy mode, and when copy mode is exited the pane will exit.
+#
+# If no arguments are given this will just open a new pane with the default
+# command.
 
 fn test-pane pane option {
 	return `{tmux display -t $pane -p '#{?'^$option^',0,1}'}
@@ -22,5 +25,9 @@ if {~ $1 -} {
 		}
 	}
 } {
-	tmux split-window -c '#{pane_current_path}' tmux-exec - $*
+	if {~ $* ()} {
+		tmux split-window -c '#{pane_current_path}'
+	} {
+		tmux split-window -c '#{pane_current_path}' tmux-exec - $*
+	}
 }
