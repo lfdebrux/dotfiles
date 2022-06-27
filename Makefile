@@ -9,6 +9,7 @@ TARGETS := \
 	~/.config/tig \
 	~/.config/tmux \
 	~/.config/nvim \
+	~/.config/starship.toml \
 	~/.inputrc \
 	~/.tigrc \
 	~/.tmux.conf
