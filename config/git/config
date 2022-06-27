@@ -24,4 +24,5 @@
 		| awk '$3 == \"[gone]\" { print $1 }' \
 		| xargs git branch -d \
 		;}; f"
+	short = rev-parse --short
 	touch-commit = "!f(){ git commit --amend --date=$(date -R) }; f"
