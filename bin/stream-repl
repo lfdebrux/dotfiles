@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#
+# Usage: stream-repl COMMAND
+#
+# Expects some input on fd 3.
+#
+# Example:
+#   cf curl /v3/processes |[1=3] stream-repl jq
+
+COMMAND=$1
+
+# read from pipe until hangup
+TMPFILE="$(mktemp /tmp/stream-repl.XXX)" || exit 1
+trap 'rm $TMPFILE' EXIT
+cat /dev/fd/3 > "$TMPFILE"
+
+repl() {
+  while true
+  do
+    local expr="$(rlwrap -S "$COMMAND> " -o cat)"
+    $COMMAND "$expr" < "$TMPFILE"
+  done
+}
+
+repl

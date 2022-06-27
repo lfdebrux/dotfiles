@@ -1,0 +1,15 @@
+#!/usr/bin/env es
+#
+# Abbreviate a path
+
+# https://unix.stackexchange.com/questions/55930/bash-prompt-with-abbreviated-current-director-including-dot-files
+
+fn abbr p {
+  if {~ $p ()} {
+    p = `{pwd}
+  }
+  sed -E -e s:$home:~: -e 's:([.]?[^/])[^/]*/:\1/:g' <<< $p
+}
+
+echo $0
+abbr $1

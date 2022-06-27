@@ -1,0 +1,16 @@
+
+mkdir -p $home/.cache/es
+
+history=$home/.cache/es/history
+
+# I like using source instead of dot
+fn-source = $&dot
+
+# add some helpful utility functions
+source $home/.config/es/utils.es
+
+# I get lost easily, print current working directory before the prompt
+fn-%prompt = pwd
+
+# general junk goes after here
+#eval `` () {pyenv init -}

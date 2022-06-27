@@ -1,0 +1,22 @@
+#!/usr/bin/env es
+#
+# Usage:
+#   gits
+#   gits <command> [<args>...]
+# ----
+# gits 0.0.0
+
+fn walk f paths {
+  for (p = $paths) {
+    $f $p
+    if { access -d $p } {
+      walk $f `{9 ls -n $p}
+    }
+  }
+}
+
+fn gits_find {
+  find . -name .git -exec dirname '{}' ';' -prune
+}
+
+gits_find
