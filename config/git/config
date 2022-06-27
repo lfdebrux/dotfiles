@@ -17,7 +17,7 @@
 		git switch -q `git default-ref` \
 		&& git pull \
 		;}; f"
-	update-default = remote set-head origin -a
+	set-default-ref = remote set-head origin -a
 	prune-branches = "!f() { \
 		git fetch --prune \
 		&& git branch -v --list --merged \
