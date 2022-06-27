@@ -1,2 +1,4 @@
 bind status + !git commit --amend
 bind main + ?git commit --fixup %(commit)
+bind main p ?git push %(remote) %(branch)
+bind main P ?git push --force-with-lease %(remote) %(branch)
