@@ -1,0 +1,6 @@
+format = """
+$directory$git_branch$cmd_duration$time
+% """
+
+[time]
+disabled = false
