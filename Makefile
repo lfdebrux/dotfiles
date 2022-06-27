@@ -6,9 +6,11 @@ LN := $(shell which ln)
 
 TARGETS := \
 	~/.config/git \
+	~/.config/tig \
 	~/.config/tmux \
 	~/.config/nvim \
 	~/.inputrc \
+	~/.tigrc \
 	~/.tmux.conf
 
 ~/.%: %
