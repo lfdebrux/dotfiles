@@ -15,4 +15,6 @@ set expandtab
 
 set list
 
+nmap <Esc> <cmd>nohlsearch<CR>
+
 filetype plugin indent on
