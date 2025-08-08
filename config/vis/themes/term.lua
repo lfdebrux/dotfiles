@@ -1,7 +1,7 @@
 -- Acme editor color scheme
 local lexers = vis.lexers
 
-lexers.STYLE_DEFAULT = 'back:default,fore:default'
+lexers.STYLE_DEFAULT = 'back:default,fore:white'
 lexers.STYLE_NOTHING = 'back:white'
 lexers.STYLE_CLASS = 'fore:black'
 lexers.STYLE_COMMENT = 'fore:black'
@@ -25,12 +25,12 @@ lexers.STYLE_IDENTIFIER = 'fore:black'
 
 lexers.STYLE_LINENUMBER = 'fore:black'
 lexers.STYLE_LINENUMBER_CURSOR = lexers.STYLE_LINENUMBER
-lexers.STYLE_CURSOR = 'back:yellow'
+lexers.STYLE_CURSOR = 'fore:black,back:yellow'
 lexers.STYLE_CURSOR_PRIMARY = 'fore:yellow,reverse'
 lexers.STYLE_CURSOR_LINE = 'underlined'
 lexers.STYLE_COLOR_COLUMN = 'back:#e6ffff'
-lexers.STYLE_SELECTION = 'back:yellow'
-lexers.STYLE_STATUS = 'back:14,underlined'
+lexers.STYLE_SELECTION = 'fore:white,back:yellow'
+lexers.STYLE_STATUS = 'fore:default,back:14,underlined'
 lexers.STYLE_STATUS_FOCUSED = lexers.STYLE_STATUS
 lexers.STYLE_SEPARATOR = 'fore:magenta'
 lexers.STYLE_INFO = 'fore:default,back:default,bold'
