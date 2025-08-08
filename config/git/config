@@ -9,7 +9,12 @@
 [alias]
 	default-ref = "!git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@'"
 	please = push --force-with-lease
-	ri = "!f() { git rebase -i origin/`git default-ref` ;}; f"
+	ri = "!f() { \
+		REMOTE="origin"; \
+		BRANCH="$(git branch --show-current)"; \
+		UPSTREAM="$(git config --get branch.$BRANCH.rebaseDefault || git default-ref)"; \
+		git rebase -i "$REMOTE/$UPSTREAM"; \
+		}; f"
 	rc = rebase --continue
 	up = update
 	# uses trick from https://www.atlassian.com/blog/git/advanced-git-aliases
