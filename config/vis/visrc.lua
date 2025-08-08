@@ -2,7 +2,6 @@
 require('vis')
 
 -- load plugins
-require('editorconfig/editorconfig')
 
 vis.events.subscribe(vis.events.INIT, function()
 	-- Your global configuration options
@@ -13,4 +12,8 @@ vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	-- vis:command('set number')
 	vis:command('set showtabs on')
 	vis:command('set showspaces on')
+
+	vis:command('set tabwidth 2')
+	vis:command('set autoindent on')
+	vis:command('set expandtab on')
 end)
