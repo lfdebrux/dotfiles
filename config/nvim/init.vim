@@ -1,6 +1,10 @@
 set nocompatible
 
-colorscheme peachpuff
+" keep terminal background colour, make sure syntax highlighting is readable
+set background=light
+autocmd ColorScheme * highlight Normal ctermbg=None guibg=None
+" colorscheme peachpuff
+colorscheme vim
 
 set titlestring=%f
 set title
