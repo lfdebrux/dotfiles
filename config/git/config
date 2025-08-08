@@ -1,7 +1,7 @@
-[core]
-	hooksPath = ~/.config/git/hooks
 [init]
 	defaultBranch = main
+[commit]
+	verbose = true
 [pull]
 	ff = only
 [rebase]
