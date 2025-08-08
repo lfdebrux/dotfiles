@@ -22,3 +22,7 @@ lexers.STYLE_VARIABLE = 'fore:black'
 lexers.STYLE_WHITESPACE = 'fore:white'
 lexers.STYLE_EMBEDDED = 'fore:black'
 lexers.STYLE_IDENTIFIER = 'fore:black'
+
+-- Ruby
+lexers.STYLE_STRING_SYMBOL = lexers.STYLE_STRING
+lexers.STYLE_FUNCTION_BUILTIN = 'fore:magenta'
