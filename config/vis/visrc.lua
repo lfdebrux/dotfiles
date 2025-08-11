@@ -11,6 +11,6 @@ end)
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	-- Your per window configuration options e.g.
 	-- vis:command('set number')
-	vis:command('set show-tabs on')
-	vis:command('set show-spaces on')
+	vis:command('set showtabs on')
+	vis:command('set showspaces on')
 end)
