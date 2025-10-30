@@ -31,3 +31,9 @@
 		;}; f"
 	short = rev-parse --short
 	touch-commit = "!f(){ git commit --amend --date=$(date -R) }; f"
+	show-message = show --no-patch --format=%B
+	format-message = "!f(){ \
+		filename="0001-$(git show --no-patch --format=%f $*).msg"; \
+		git show --no-patch --format=%B $* > "$filename"; \
+		echo $filename; \
+		}; f"
