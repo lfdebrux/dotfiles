@@ -4,6 +4,7 @@ set nocompatible
 set background=light
 autocmd ColorScheme * highlight Normal ctermbg=None guibg=None
 " colorscheme peachpuff
+set notermguicolors
 colorscheme vim
 
 set titlestring=%f
